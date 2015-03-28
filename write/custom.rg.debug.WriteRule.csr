@@ -1,0 +1,101 @@
+<csr:rule name="custom.rg.debug.WriteRule" match="custom:rg:debug:write" empty>
+	
+	<csr:class super="dt.common.page.Rule" />
+	
+	<csr:description>
+		
+		<ul>
+			<li>Version: v1.0.0</li>
+			<li>Date: Monday, November 26, 2012</li>
+			<li>Docs: <a href="https://github.com/registerguard/csp-debug-write">https://github.com/registerguard/csp-debug-write</a></li>
+		</ul>
+		
+	</csr:description>
+	
+	<csr:attribute name="prehtml"     description="PREHTML section (before &lt;doctype&gt;)."                                               type="prehtml:STRING"     />
+	<csr:attribute name="head"        description="HEAD section (in &lt;head&gt;)."                                                         type="head:STRING"        />
+	<csr:attribute name="body"        description="BODY section (in &lt;body&gt;)."                                                         type="body:STRING"        />
+	<csr:attribute name="posthtml"    description="POSTHTML section (after &lt;/html&gt;)."                                                 type="posthtml:STRING"    />
+	<csr:attribute name="this"        description="Called in place (immediately invoked)."                                                  type="this:STRING"        />
+	<csr:attribute name="attributes"  description="Delimited attributes to include in the &lt;pre&gt; tag. Format: 'attribute|value, ...'." type="attributes:STRING"  />
+	<csr:attribute name="querystring" description="Query string parameter to use. Default is 'debug'."                                      type="querystring:STRING" />
+	
+	<csr:action>
+		
+		<script language="cache" runat="compiler">
+			do ..RenderDTStartTag()
+		</script>
+		
+		<script language="cache" runat="server">
+			
+			if (##'..IsDefined("this")'## || (( ' ##'..IsDefined("prehtml")'##) && ( ' ##'..IsDefined("head")'##) && ( ' ##'..IsDefined("body")'##) && ( ' ##'..IsDefined("posthtml")'##))) {
+				
+				do ##class(custom.rg.debug.Write).all(##'..GetAttribute("querystring", "debug")'##, "this", ##'..GetAttribute("attributes")'##)
+				
+			}
+			
+		</script>
+		
+		<csr:section name="PREHTML" block="##(..GetAttribute("prehtml"))##">
+			
+			<script language="cache" runat="server">
+				
+				if (##'..IsDefined("prehtml")'##) {
+					
+					do ##class(custom.rg.debug.Write).all(##'..GetAttribute("querystring", "debug")'##, "prehtml", ##'..GetAttribute("attributes")'##)
+					
+				}
+				
+			</script>
+			
+		</csr:section>
+		
+		<csr:section name="HEAD" block="##(..GetAttribute("head"))##">
+			
+			<script language="cache" runat="server">
+				
+				if (##'..IsDefined("head")'##) {
+					
+					do ##class(custom.rg.debug.Write).all(##'..GetAttribute("querystring", "debug")'##, "head", ##'..GetAttribute("attributes")'##)
+					
+				}
+				
+			</script>
+			
+		</csr:section>
+		
+		<csr:section name="BODY" block="##(..GetAttribute("body"))##">
+			
+			<script language="cache" runat="server">
+				
+				if (##'..IsDefined("body")'##) {
+					
+					do ##class(custom.rg.debug.Write).all(##'..GetAttribute("querystring", "debug")'##, "body", ##'..GetAttribute("attributes")'##)
+					
+				}
+				
+			</script>
+			
+		</csr:section>
+		
+		<csr:section name="POSTHTML" block="##(..GetAttribute("posthtml"))##">
+			
+			<script language="cache" runat="server">
+				
+				if (##'..IsDefined("posthtml")'##) {
+					
+					do ##class(custom.rg.debug.Write).all(##'..GetAttribute("querystring", "debug")'##, "posthtml", ##'..GetAttribute("attributes")'##)
+					
+				}
+				
+			</script>
+			
+		</csr:section>
+		
+		<script language="cache" runat="compiler">
+			do ..RenderDTEndTag()
+		</script>
+		
+	</csr:action>
+	
+</csr:rule>

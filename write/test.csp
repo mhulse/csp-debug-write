@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Testing Debug Write</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<style>
+	<!--
+		pre.pretty {
+			font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+			font-size: 13px;
+			line-height: 20px;
+			color: #333333;
+			background-color: #f5f5f5;
+			border: 1px solid #ccc;
+			border: 1px solid rgba(0, 0, 0, 0.15);
+			padding: 0 3px 2px;
+			-webkit-border-radius: 3px;
+			-moz-border-radius: 3px;
+			border-radius: 3px;
+			display: block;
+			margin: 10px 0;
+			padding: 9.5px;
+			word-break: break-all;
+			word-wrap: break-word;
+			white-space: pre;
+			-webkit-border-radius: 4px;
+			-moz-border-radius: 4px;
+			border-radius: 4px;
+			max-height: 340px;
+			overflow: auto;
+		}
+	-->
+</style>
+</head>
+<body>
+<custom:rg:debug:write this prehtml head body="2" posthtml attributes="class|pretty" />
+<p>Nam ut aliquet diam. Suspendisse et mauris tempus urna ullamcorper placerat at non eros. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pharetra pellentesque sem eu dictum. Nunc accumsan sagittis velit, quis condimentum diam hendrerit a. Fusce sollicitudin, nibh eu bibendum aliquet, magna nulla lacinia nisl, vitae imperdiet diam leo quis massa. Pellentesque sodales rutrum tempus. Vivamus nunc nisi, auctor bibendum condimentum quis, tincidunt sed magna. Nunc a quam dolor. Donec eu mi in diam placerat luctus in in massa. Etiam commodo, odio et lobortis condimentum, sapien sapien iaculis tellus, et rhoncus leo massa ut diam. Ut molestie aliquet lectus, nec condimentum sem mollis id.</p>
+#[ do ##class(custom.rg.debug.Write).all("", "right here!", "class|pretty") ]#
+<p>Praesent sit amet nulla tortor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin elementum tincidunt arcu at congue. Sed rhoncus suscipit augue, in placerat eros vestibulum nec. Donec ac diam turpis, sed lobortis ipsum. Ut eros est, laoreet ac hendrerit id, ullamcorper id lorem. Aenean fermentum lectus eu purus gravida facilisis eu at elit. Donec sapien justo, sollicitudin eget commodo in, blandit non massa. Nulla quis sagittis velit. Phasellus nibh diam, viverra consequat tincidunt et, luctus eget nunc. Cras aliquet lacinia dolor vel condimentum.</p>
+</body>
+</html>
